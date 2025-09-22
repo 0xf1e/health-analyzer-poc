@@ -7,14 +7,12 @@ spec:
   volumes:
     - name: project-data
       hostPath:
-        path: /home/jmk/Repositories/evidence-dev
+        path: /home/snowpoke/source/repos/project-health-analyzer
         type: Directory
-        selinuxRelabel: "shared"
     - name: sources-data
       hostPath:
-        path: /home/jmk/Repositories/evidence-dev/sources
+        path: /home/snowpoke/source/repos/project-health-analyzer/sources
         type: Directory
-        selinuxRelabel: "shared"
   containers:
     - name: evidence-app
       image: evidencedev/devenv:latest

@@ -1,0 +1,75 @@
+
+# 2025-09-22 12:04:01.816532
++y
+
+# 2025-09-22 12:04:05.146161
++/ask
+
+# 2025-09-22 12:04:32.267363
++/model openrouter/deepseek/deepseek-chat-v3.1
+
+# 2025-09-22 12:05:02.037815
++/multiline-mode
+
+# 2025-09-22 12:40:59.163135
++
++    The source code is located in a public, version-controlled repository
++        and includes a README file
++        and a declaration of the OSI-approved open source license under which it is published (PASS/FAIL)
++    There has been at least one release within the last year (yes/no)
++    The number of active contributors (within the last 12 months) is measured (below/above 3)
++    The number of commits per month within the last 12 months is measured (below/above 2)
++    The number of open issues is measured (not currently used)
++
++---
++
++I want to check for these metrics using GitHubs GraphQL API. please write the appropriate curl requests that get this information
++
+
+# 2025-09-22 12:48:13.841073
++/code
++Please write a .sh file that runs these commands. The token is $GITHUB_TOKEN, the owner is $OWNER, the repo name is $REPO_NAME
++
+
+# 2025-09-22 12:49:17.080252
++y
+
+# 2025-09-22 12:49:23.350205
++n
+
+# 2025-09-22 12:52:06.794017
++/code
+
+# 2025-09-22 12:52:20.455177
++Let's use python instead of bash
++
+
+# 2025-09-22 12:52:57.425753
++Actually, enver mind. Let's continue using bash. However, I want you to make the bash output more verbose. Show me which requests you're running, what the output is, and what computations you are making based on them.
++
+
+# 2025-09-22 13:01:59.815006
++n
+
+# 2025-09-22 13:10:12.437407
++Sorry, the requirements just changed al ittle. I now want this:
++
++1. A list of all .md files in the root folder of the repository
++2. The name of the license
++3. List of all releases with release timestamp
++4. List of all contributers, with their most recent date of contributions
++5. List of all commits
++6. List of all issues, the name of the issue creator, and whether it was closed or not.
++
+
+# 2025-09-22 14:57:01.709229
++n
+
+# 2025-09-22 15:14:27.704775
++Alrighty! And now we get to the fun part! Turns out we need to rewrite this project in python <3 -- Would you be so kind and do this for me?
+
+# 2025-09-22 15:17:12.178283
++y
+
+# 2025-09-22 15:17:28.288198
++n

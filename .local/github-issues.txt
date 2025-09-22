@@ -1,0 +1,536 @@
+============================================================
+Issue #7: 🔍  Research stategic fit of CHAOSS project Augur
+------------------------------------------------------------
+State: OPEN
+Author: janhalen
+Created At: 2025-04-01T17:05:10Z
+URL: https://github.com/OS2sandbox/project-health-analyzer/issues/7
+------------------------------------------------------------
+
+### Issue Body ###
+
+# 🎯 Goal: Decide whether the Augur project could deliver on the needs that have been discussed here:
+https://github.com/OS2sandbox/project-health-analyzer/issues/1
+
+Official docs as a starting point is located here: https://oss-augur.readthedocs.io/en/main/index.html
+
+### Discussion (0 comments) ###
+
+============================================================
+
+
+============================================================
+Issue #6: 🐴 Explain and define the Pony and the Elephant factor
+------------------------------------------------------------
+State: OPEN
+Author: janhalen
+Created At: 2025-03-11T17:27:13Z
+URL: https://github.com/OS2sandbox/project-health-analyzer/issues/6
+------------------------------------------------------------
+
+### Issue Body ###
+
+## 🎯 Goal
+
+Communicate the rationale behind a subset of the evaluation criteria to our communities.
+
+## Solition
+
+A blogpost maybe? Explaining the upstream metrics concepts of the Pony and the Elephant factor.
+
+### Discussion (0 comments) ###
+
+============================================================
+
+
+============================================================
+Issue #5: User Story mapping placeholder issue?
+------------------------------------------------------------
+State: OPEN
+Author: janhalen
+Created At: 2025-02-24T08:58:25Z
+URL: https://github.com/OS2sandbox/project-health-analyzer/issues/5
+------------------------------------------------------------
+
+### Issue Body ###
+
+What user roles do we need to make mapping for?
+
+Suggestions so far:
+
+1. Board member of OS2
+2. Product Steering Comitee member
+3. Product Coordinator
+4. Product Coordination group member
+5. System owner in the org. using the product.
+6. Os2 Secretariat member?
+
+### Discussion (2 comments) ###
+
+--------------------
+Comment by snowpoke at 2025-02-24T14:32:47Z:
+
+For reference, these are the whiteboard notes I took during our framing session [notes in brackets added by me afterwards]:
+
+1. **Objective? [What business objective is this work intended to address?]**
+- Strengthen collaboration [reference to OS2 visions]
+2. **Key results? [How will you know if you've succeeded]**
+- State of an OS2 product is visible [in regards to OSS code quality]
+- Get visible warning signs [about whether the OS2 product code is failing to adhere to quality standards]
+3. **Coop partner problems? [What problem will this solve for the stakeholders?]**
+- Lacks insight into the OS2 product
+- Don't understand tech lingo [which hinders them from interpreting existing statistics]
+- Can't tell risk [of receiving code that is hard to maintain/audit]
+4. **Target group? [What type of stakeholder are we focused on?]**
+[Looking at one specific project we discussed the Product coordinator, a member of the steering committee, and a board member]
+
+--------------------
+Comment by janhalen at 2025-04-01T15:54:10Z:
+
+@zorp: Could we break these high level stories into some actionable tasks for @snowpoke to start estimating? Maybe create a milestone with a deadline?
+
+Or should we define this project a non-prioritized project?
+
+============================================================
+
+
+============================================================
+Issue #4: 🔀 Implement issue conversion rate tracker
+------------------------------------------------------------
+State: OPEN
+Author: janhalen
+Created At: 2025-01-24T14:02:39Z
+URL: https://github.com/OS2sandbox/project-health-analyzer/issues/4
+------------------------------------------------------------
+
+### Issue Body ###
+
+## 🙍🏻‍♂️ Story:
+As a project stakeholder,
+I want to measure and visualize the number of issues that ends up with actual changes to the product.
+So that I can assess the overall engangement and idea conversion ability of the projects community.
+
+### ✅ Acceptance criteria:
+
+1. A metric that shows the number of issues that have linked pull requests (PRs) merged to the main branch is available.
+2. A graphical representation the total number of issues and the number of issues with linked, merged PRs canbe shown.
+3. The representation shows the conversion rate of issues to merged PRs as a percentage.
+4. One of 3 categories are applied to the metric from a set of predefined ranges and is illustrated with a red/yellow/green colour depending on the level.
+
+### Discussion (0 comments) ###
+
+============================================================
+
+
+============================================================
+Issue #3: 🌊 Implement activity frequency tracker
+------------------------------------------------------------
+State: OPEN
+Author: janhalen
+Created At: 2025-01-24T12:19:39Z
+URL: https://github.com/OS2sandbox/project-health-analyzer/issues/3
+------------------------------------------------------------
+
+### Issue Body ###
+
+## 👨🏻‍💼 Story:
+As a project stakeholder,
+I want to measure and visualize the frequency of issues, pull requests, and releases in our repository,
+So that I can assess the overall health and sustainability of the project over time.
+
+### Discussion (0 comments) ###
+
+============================================================
+
+
+============================================================
+Issue #2: 🏗️ Discuss and design a solution architecture
+------------------------------------------------------------
+State: OPEN
+Author: janhalen
+Created At: 2025-01-14T15:54:57Z
+URL: https://github.com/OS2sandbox/project-health-analyzer/issues/2
+------------------------------------------------------------
+
+### Issue Body ###
+
+## 📊 Objective
+Research and discuss open source components that would be a strategic and practical fit for this solution
+
+## 📝 Next Steps
+1. Discuss components and architecture
+2. Break down design and implementation into technical tasks
+
+## 💡 Discussion
+What components could be used for at small and fast PoC project delivery, that utilizes existing infrastructure like GitHub pages keeping a clear exit strategy in mind?
+
+### Discussion (3 comments) ###
+
+--------------------
+Comment by janhalen at 2025-01-14T16:05:18Z:
+
+# Suggestion for solution based on [Vega-Lite](https://github.com/vega/vega-lite) and markdown / GHPages
+
+A quick and dirty version for a PoC it could be possible to use GitHub Pages and Vega-Lite
+
+```mermaid
+flowchart TD
+    subgraph sourcecode["Source Code"]
+        A["index.md<br>(Markdown content<br>&amp; HTML structure)"]
+        B["fetchGitHubMetrics.js<br>(Fetches &amp; processes<br>API data)"]
+        C["githubMetricsChartSpec.json<br>(Vega-Lite Chart<br>Specification)"]
+    end
+
+    subgraph build["Build Process"]
+        H["Static Site Generator<br>(e.g., Jekyll)"]
+        I["Generated Static Files"]
+    end
+
+    subgraph subGraph3["GitHub Pages"]
+        J["GitHub Pages Hosting"]
+    end
+
+    subgraph subGraph0["Client-Side Rendering"]
+        F["index.html"]
+        E["Vega-Lite Visualization<br>(Rendered Chart)"]
+        G["Rendered Markdown Content"]
+    end
+
+    sourcecode ---> build
+    H --> I
+    I --> J
+    F --> E & G
+    J --> F
+    B --> D["GitHub API<br>(External Data Source)"]
+    D ~~~ A
+    A -.- B & C
+
+    A:::darkgrey
+    B:::darkgrey
+    C:::darkgrey
+    H:::darkgrey
+    H:::orange
+    I:::darkgrey
+    I:::lightorange
+    J:::darkgrey
+    J:::purple
+    F:::darkgrey
+    F:::yellow
+    E:::darkgrey
+    E:::mintgreen
+    G:::darkgrey
+    G:::lightyellow
+    D:::darkgrey
+
+    classDef darkgrey fill:#ffffff,stroke:#424242,stroke-width:1px,color:#424242;
+    
+    classDef green fill:#e6ffee,stroke:#b3d9b3,stroke-width:1px;
+    classDef lightgreen fill:#f0fff0,stroke:#c1e0c1,stroke-width:1px;
+    classDef palegreen fill:#f5fff5,stroke:#d4e6d4,stroke-width:1px;
+    classDef mintgreen fill:#f0fff7,stroke:#c1e0d2,stroke-width:1px;
+    classDef lightblue fill:#f0f8ff,stroke:#c1d9f3,stroke-width:1px;
+    
+    classDef yellow fill:#fffde7,stroke:#ffd54f,stroke-width:1px;
+    
+    classDef lightyellow fill:#fffef5,stroke:#fff9c4,stroke-width:1px;
+    
+    classDef orange fill:#fff3e0,stroke:#ffb74d,stroke-width:1px;
+    
+    classDef lightorange fill:#fff8e1,stroke:#ffe0b2,stroke-width:1px;
+    
+    classDef purple fill:#f3e5f5,stroke:#ce93d8,stroke-width:1px;
+
+    style sourcecode stroke:#00C853,color:#424242,fill:#C8E6C9;
+    
+    style build stroke:#FFD600,color:#424242,fill:#FFF3E0;
+    
+    style subGraph3 stroke:#AA00FF,color:#424242,fill:#F3E5F5;
+    
+    style subGraph0 fill:#C8E6C9,stroke:#00C853,color:#424242;
+```
+
+Please discuss!
+
+--------------------
+Comment by janhalen at 2025-02-02T13:35:43Z:
+
+For a more advanced and upstream data collection framework, I would like to take a look at https://github.com/oss-review-toolkit.
+
+--------------------
+Comment by janhalen at 2025-04-01T16:59:46Z:
+
+After some pro-bono research from @snowpoke, another pretty solid option could be to adopt the Chaoss project Augur, and contribute upstream fixes and feaures instead of completely reinventing the wheel.
+
+============================================================
+
+
+============================================================
+Issue #1: ⚖️  Define a set of evaluation criterias to illustrate
+------------------------------------------------------------
+State: OPEN
+Author: janhalen
+Created At: 2025-01-14T09:14:16Z
+URL: https://github.com/OS2sandbox/project-health-analyzer/issues/1
+------------------------------------------------------------
+
+### Issue Body ###
+
+## 📊 Objective
+Create a comprehensive set of criteria to assess the overall health and security of our software projects in OS².
+
+## 📝 Next Steps
+1. Brainstorm and finalize evaluation factors
+2. Break down factors into technical tasks
+3. Develop methods for data collection and visualization
+
+## 💡 Discussion
+Share your thoughts on important criteria we should include. What metrics do you find most valuable for assessing project health?
+
+### Discussion (13 comments) ###
+
+--------------------
+Comment by janhalen at 2025-01-14T09:23:06Z:
+
+# 💡 Suggestions for Evaluation Criteria
+
+## 🏥 Project Health
+
+### 🔄 Update Frequency
+- Check last update date and commit frequency
+- Regular updates indicate active maintenance
+
+### 🎫 Issues and Pull Requests
+- Analyze open/closed issues and PR merge frequency
+- Healthy projects show active issue management and regular contributions
+
+### 🚀 Release Frequency
+- Examine version release cadence, including bug fixes
+- Consistent releases suggest ongoing development
+
+### 👥 Contributor Activity
+- Assess contributor count and new contributor influx
+- Diverse, growing contributor base is positive
+
+### 🤝 Community Engagement
+- Evaluate responsiveness to issues/PRs and interaction tone
+
+### ⭐ Community Interest
+- Monitor stars and forks as indicators of interest
+
+## 🔒 Security & Quality
+
+### 🛡️ Security (OpenSSF Scorecard)
+- Utilize for quick assessment of security practices
+- Provides easy-to-understand project scores
+
+### 📚 Documentation Quality
+- Evaluate completeness and clarity
+- Well-maintained docs show user-centric approach
+
+### 💻 Code Quality
+- Use automated tools for assessment
+
+### 📊 Usage Statistics
+- Check download stats for package manager-published projects
+
+Further reading:
+https://opensource.guide/metrics/
+
+
+---
+
+@zorp & @thpa-bitmind: Your input is valuable! Please share thoughts on:
+1. Criteria viability for our illustration goals, what is important?
+2. Technical details: GitHub API availability and potential calculations
+
+Let's refine these criteria to create a robust evaluation framework! 🚀
+
+--------------------
+Comment by sissekaliaswendyfan at 2025-01-14T15:52:31Z:
+
+### Discussions as evaluation criteria?
+
+I recently learned about the 'Discussions'-feature in GitHub repos (Im a newbie 👶). 
+
+As I understand it, repo-admin has to activate Discussions (right?). Even though Discussions might not be activated in a repo, we could consider including discussions in the evaluation criteria in **⭐️ Community Engagement**? 
+
+(As mentioned - Im kindergarten-level at GitHub and apologize if I've got it wrong or if this is irrelevant 😅) 
+
+Later🐊
+/Sis
+
+--------------------
+Comment by janhalen at 2025-01-14T17:32:12Z:
+
+> ### Discussions as evaluation criteria?
+> I recently learned about the 'Discussions'-feature in GitHub repos (Im a newbie 👶).
+> 
+> As I understand it, repo-admin has to activate Discussions (right?). Even though Discussions might not be activated in a repo, we could consider including discussions in the evaluation criteria in **⭐️ Community Engagement**?
+> 
+> (As mentioned - Im kindergarten-level at GitHub and apologize if I've got it wrong or if this is irrelevant 😅)
+> 
+> Later🐊 /Sis
+
+Hi @nocodesissi! 👋
+
+Thank you for your question regarding the use of Discussions as an evaluation criterion. It's great to see you engaging with the features of GitHub!
+While Discussions can indeed foster community engagement, it's important to note that it is not an open-source feature of GitHub. This means that relying on it could lead to vendor lock-in, where you become dependent on GitHub's specific platform and features. If GitHub were to change its offerings or if you decided to move to another platform, transitioning away from Discussions could be challenging.
+Moreover, many of the collaborative functionalities that Discussions offers are already available through issue comments. Issues allow for similar conversations and community interactions without the added dependency on a specific feature.
+I appreciate your input, and it's always valuable to consider how we can engage our communities effectively! If you have any more questions or thoughts, feel free to share.
+
+--------------------
+Comment by zorp at 2025-01-14T20:57:42Z:
+
+> > ### Discussions as evaluation criteria?
+> > I recently learned about the 'Discussions'-feature in GitHub repos (Im a newbie 👶).
+> > As I understand it, repo-admin has to activate Discussions (right?). Even though Discussions might not be activated in a repo, we could consider including discussions in the evaluation criteria in **⭐️ Community Engagement**?
+> > (As mentioned - Im kindergarten-level at GitHub and apologize if I've got it wrong or if this is irrelevant 😅)
+> > Later🐊 /Sis
+> 
+> Hi @nocodesissi! 👋
+> 
+> Thank you for your question regarding the use of Discussions as an evaluation criterion. It's great to see you engaging with the features of GitHub! While Discussions can indeed foster community engagement, it's important to note that it is not an open-source feature of GitHub. This means that relying on it could lead to vendor lock-in, where you become dependent on GitHub's specific platform and features. If GitHub were to change its offerings or if you decided to move to another platform, transitioning away from Discussions could be challenging. Moreover, many of the collaborative functionalities that Discussions offers are already available through issue comments. Issues allow for similar conversations and community interactions without the added dependency on a specific feature. I appreciate your input, and it's always valuable to consider how we can engage our communities effectively! If you have any more questions or thoughts, feel free to share.
+
+
+I'm not that afraid of introducing discussions (or projects) as long as it is very clear to the community that: should GitHub in the future decide to charge money it is no longer part of our offering nor is it possible to migrate the content created in that case the project is moving away from GitHub.
+
+That being said, we are introducing Zulip as a collaboration platform to boost community engagement, could we measure on activity in channels on Zulip and use that as a metric for community engagement? For example:
+
+- Number of people in the channel
+- Number of messages in a given time frame (recent time)
+- Number of different people engaging in conversation
+- Number of topics in the channel
+
+Also, could we measure meeting activity based on how many meeting minutes are published last and current year? What would i require?
+
+Also we could consider introducing files describing the organisation in the project template (if not already there). For example:
+- steering-commitee.md
+- coordination-group.md
+
+these being present and having relevant content could also be a measure for community engagement.
+
+--------------------
+Comment by sissekaliaswendyfan at 2025-01-16T08:14:19Z:
+
+Thank you @janhalen and @zorp for elaborating. 
+
+I understand the importance of being consious about vendor-lock-in. 
+
+Despite that, I mostly agree with Zorp, as I think it's important to also evaluate the community's interactions in forums like Discussions or Zulip. Even though it resembles the opportunities found in issues, I would argue that there's something different at play when a community can brainstorm and interact a bit more informally—as long as there's good practice in place to ensure that dialogues are moved to issues as soon as it's relevant. Naturally, this requires guidelines.  
+
+
+I’ve looked into [[VMware Tanzu's](https://github.com/vmware-tanzu)](https://github.com/vmware-tanzu) approach to measuring community engagement, and I think there’s a lot of great stuff to draw from. I suggest we take inspiration from (or directly copy) their methods unless there are other projects doing something even better. There’s no need to reinvent the wheel. ;)  
+
+
+I believe it’s important for us to balance quantitative and qualitative parameters. Just because something can be quantified doesn’t necessarily mean it will provide the best answers to what we want to investigate—at least, that’s what I try to remind myself.  
+
+
+Feel free to check out VMware Tanzu’s health-check sheet: [[HEALTHCHECK-SHEET.md](https://github.com/vmware-tanzu/community-engagement/blob/main/HEALTHCHECK-SHEET.md)](https://github.com/vmware-tanzu/community-engagement/blob/main/HEALTHCHECK-SHEET.md)  
+
+
+Can we use some of it?  
+
+
+I’m also a big fan of their Inclusive Terminology guide ❤️. That’s something we could consider as well.  
+
+
+What are your thoughts? 💭
+
+--------------------
+Comment by janhalen at 2025-01-16T13:01:08Z:
+
+@nocodesissi:
+
+I completely agree that we shouldn't reinvent the wheel, and looking to established practices is a great approach. However, I'd like to suggest a slight shift in our reference point. While VMware Tanzu's methods are certainly valuable, it might be even more beneficial for us to align with a more independent, community-driven standard.
+
+ In this light, I'd like to draw your attention to the CHAOSS (Community Health Analytics Open Source Software) project: https://github.com/chaoss CHAOSS is a Linux Foundation project that focuses on creating analytics and metrics to help define community health. They offer a comprehensive, vendor-neutral approach to measuring open source community health and sustainability. Their metrics and methods are developed collaboratively by a diverse community of professionals and academics, which helps ensure a balanced and unbiased perspective. Some key advantages of using CHAOSS as our model include:
+
+-  Vendor neutrality, reducing potential bias towards specific commercial interests
+-  A wide range of metrics covering various aspects of community health
+-  Regular updates and improvements based on community feedback
+-  Alignment with broader open source community standards
+
+
+@nocodesissi, @zorp, @thpa-bitmind: What do you think about pivoting towards CHAOSS as our primary reference? 
+
+I'm interrested to hear your thoughts on this approach!
+
+--------------------
+Comment by janhalen at 2025-01-17T09:33:08Z:
+
+The evaluation of a product's maturity is a complex process that encompasses numerous factors, including community health. To enhance the credibility and universality of our assessment, it would be beneficial to align our maturity levels with internationally recognized standards, such as those established by the Cloud Native Computing Foundation.
+
+. The challenge of accurately describing an open source project's state, health, and maturity is not unique to OS2, and we need not reinvent the wheel by creating our own criteria or levels. For a comprehensive understanding of this topic, I recommend exploring the [CNCF's project metrics](https://www.cncf.io/project-metrics/)
+. These metrics are grounded in the well-established theory of Diffusion of Innovations, which has been popularized through frameworks like [Crossing the Chasm](https://www.predictableinnovation.com/methods/crossing-the-chasm-framework-mistakes)
+. By adopting more widely-accepted models, we can ensure our evaluation process is both robust and relatable to the broader open source community.
+
+--------------------
+Comment by janhalen at 2025-01-17T13:09:38Z:
+
+To boil it down and to reach our milestone, I think we @nocodesissi & @zorp need to boil the evaluation criteria for this PoC down to max 5 criteria. Lets agree on 5 initial evaluation criteria and agree on a deadline for doing so! 
+
+That way @thpa-bitmind can get started estimating the time needed for delivering a solution.
+
+Later more criteria can be addded....
+
+--------------------
+Comment by janhalen at 2025-01-23T11:13:21Z:
+
+# 🔎 Criteria Refinement Results
+
+*After meeting on 23 january 2025 we narrowed it down and idientified 3 initial criteria we want to measure and report on:*
+
+- [🌊 Implement Activity Frequency Tracker](https://github.com/OS2sandbox/project-health-analyzer/issues/3)
+ *Measure on issues, pull requests and releases. How often do they occur.*
+
+-  [🔀 Implement issue conversion rate tracker](https://github.com/OS2sandbox/project-health-analyzer/issues/4)
+*Activity/Impact -  Measure how many issues results in PR's that are merged.*
+
+- [ ] *Community engagement - Mesure on issues, commits and PRs. How many unique users are contributing?*
+- [ ] *Core governance - Measure that CONTRIBUTING.md and CODE_OF_CONDUCT.md exists and that they contain the recommended  sections from the os2offdig template and that there is commits/prs by one of the appointed project maintainers to the template files.* (This might introduce a need for a MAINTAINERS.md file)
+
+The values/results of these 4 criteria should be seperated in 3 seperate buckets to make a simple "traffic light" red/yellow/green illustration. These buckets needs to be discussed, when ready this can be made a seperate issue:
+
+- [ ] Discuss bucket boundaries for the specific criteria
+
+@nocodesissi & @zorp please confirm that you agree on these criteria (and upcoming tasks)
+
+--------------------
+Comment by sissekaliaswendyfan at 2025-01-23T13:11:36Z:
+
+Thanks for following up on the meeting @janhalen. 
+
+I agree on these criteria 👍  As I recall we also discussed one more aspect of the _activity/frequency-criteria_, which was to maybe include the following: Measuring how many issues results in PR's. 
+
+This was something we considered to acommodate the possible scenario where a project has a lot of issues, that might not be handled by the community (AKA lead to PR's). What do you think about this? Is it already included in the Activity/Frequency-criteria or should we leave it for now and include it in a later version of Health Measuring? I completely trust in your opinion and decision in this regard, just wanted to mention it. 
+
+Thanks again! I really enjoy being able to contribute here and am so excited about seeing the final results 🥳
+
+--------------------
+Comment by janhalen at 2025-01-24T07:20:55Z:
+
+@nocodesissi: Youre right! I forgot, thanks for reminding me!
+
+I have added it as a further critieria.. " Activity/Impact - *"Measure how many issues results in PR's that are merged."*
+
+--------------------
+Comment by janhalen at 2025-03-11T12:54:36Z:
+
+Ok.. got some time to research on some upstream evaluation efforts. We should avoid creating a unique OS2 solution to maintain if we can avoid it.
+
+https://github.com/ossf/wg-best-practices-os-developers/blob/main/docs/Concise-Guide-for-Evaluating-Open-Source-Software.md - 
+
+Some of the checks are allready covered by 
+
+https://github.com/ossf/scorecard?tab=readme-ov-file#scorecard-checks Which can generate reports or nice badges.
+
+--------------------
+Comment by janhalen at 2025-03-11T12:56:47Z:
+
+A evaluator solution that is Open Source is https://oss-review-toolkit.org/ort/docs/tools/evaluator that is a part of the oss toolkit.
+
+But we should be aware that the rules needs to be written with Kotlin if we want to add custom rules that evaluates on the data from e.g. the GitHub API
+
+============================================================
+
+
